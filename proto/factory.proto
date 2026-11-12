@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package factory;
+
+service Factory {
+  rpc GetStatus (Empty) returns (Status);
+  rpc StartBatch (StartRequest) returns (Reply);
+  rpc PauseLine (Request) returns (Reply);
+  rpc ResumeLine (Request) returns (Reply);
+}
+
+service Peer {
+  rpc Heartbeat (NodeInfo) returns (NodeInfo);
+}
+
+message Empty {}
+
+message Request {
+  string request_id = 1;
+}
+
+message StartRequest {
+  string request_id = 1;
+  string set_code = 2;
+  int32 target = 3;
+}
+
+message Reply {
+  bool ok = 1;
+  string message = 2;
+  int32 node_id = 3;
+  int32 leader_id = 4;
+}
+
+message Status {
+  int32 node_id = 1;
+  int32 leader_id = 2;
+  int32 version = 3;
+  string status = 4;
+  string reason = 5;
+  string batch = 6;
+  int32 target = 7;
+  int32 approved = 8;
+  int32 rejected = 9;
+  int32 common = 10;
+  int32 uncommon = 11;
+  int32 rare = 12;
+  int32 pending = 13;
+  double temperature = 14;
+  double humidity = 15;
+  repeated string events = 16;
+}
+
+message NodeInfo {
+  int32 id = 1;
+  int32 term = 2;
+  int32 leader_id = 3;
+  int32 version = 4;
+  string state = 5;
+}

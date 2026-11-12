@@ -1,0 +1,19 @@
+{
+  "name": "booster-factory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "broker": "docker compose up -d",
+    "controller:1": "NODE_ID=1 node --env-file=.env src/controller/index.js",
+    "controller:2": "NODE_ID=2 node --env-file=.env src/controller/index.js",
+    "controller:3": "NODE_ID=3 node --env-file=.env src/controller/index.js",
+    "plant": "node --env-file=.env src/plant.js",
+    "client": "node --env-file=.env src/client.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.7",
+    "@grpc/proto-loader": "^0.8.1",
+    "mqtt": "^5.16.1"
+  }
+}
