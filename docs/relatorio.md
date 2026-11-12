@@ -50,3 +50,7 @@ O cliente consulta os 3 controladores e só mostra o estado em que a maioria con
 - Um líder invadido que replicasse dados falsos contaminaria as réplicas. Resolver isso exigiria consenso bizantino, com pelo menos 4 controladores.
 - O broker é um ponto único de falha.
 - Não há TLS nem autenticação no MQTT e no gRPC.
+
+## Repositório
+
+https://github.com/rodrigoacs/tp1-sd
